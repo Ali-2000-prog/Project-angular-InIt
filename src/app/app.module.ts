@@ -14,6 +14,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { ForgotPasswordComponent } from './login-screen/forgot-password/forgot-password.component';
+import { NewUserComponent } from './login-screen/new-user/new-user.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,7 @@ import { LoginScreenComponent } from './login-screen/login-screen.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
