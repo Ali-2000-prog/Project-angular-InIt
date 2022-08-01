@@ -10,21 +10,22 @@ import { ForgotPasswordComponent } from "./login-screen/forgot-password/forgot-p
 import { NewUserComponent } from "./login-screen/new-user/new-user.component";
 
 const routes: Routes = [
-  // {
-  //   path: "",
-  //   redirectTo: "dashboard",
-  //   pathMatch: "full"
-  // },
-  // {
-  //   path: "",
-  //   component: AdminLayoutComponent,
-  //   children: [
-  //     {
-  //       path: "",
-  //       loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
-  //     }
-  //   ]
-  // }, {
+  {
+    path: "",
+    redirectTo: "dashboard",
+    pathMatch: "full"
+  },
+  {
+    path: "",
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
+      }
+    ]
+  }, 
+  //{
   //   path: "",
   //   component: AuthLayoutComponent,
   //   children: [
@@ -34,23 +35,21 @@ const routes: Routes = [
   //     }
   //   ]
   // },
-  // {
-  //   path: "**",
-  //   redirectTo: "dashboard"
-  // }
+  {
+    path: "**",
+    redirectTo: "dashboard"
+  }
 
-  {path:"", component:LoginScreenComponent},
-  {path:"ForgotPassword", component:ForgotPasswordComponent},
-  {path:"NewUser", component:NewUserComponent}
+  // {path:"", component:LoginScreenComponent},
+  // {path:"ForgotPassword", component:ForgotPasswordComponent},
+  // {path:"NewUser", component:NewUserComponent}
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes, {
-      useHash: true
-    })
+    RouterModule.forRoot(routes, {useHash: true})
   ],
   exports: [RouterModule]
 })
