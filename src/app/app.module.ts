@@ -18,6 +18,8 @@ import { ForgotPasswordComponent } from './login-screen/forgot-password/forgot-p
 import { NewUserComponent } from './login-screen/new-user/new-user.component';
 import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-group-popup.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -27,6 +29,7 @@ import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-g
     NgbModule,
     RouterModule,
     AppRoutingModule,
+    MatDialogModule,
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent],
