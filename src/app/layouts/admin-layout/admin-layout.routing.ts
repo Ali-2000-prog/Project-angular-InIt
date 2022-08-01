@@ -11,7 +11,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
-  { path: "icons", component: IconsComponent },
+  { path: "UserGroup", component: IconsComponent },
   { path: "maps", component: MapComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "user", component: UserComponent },
