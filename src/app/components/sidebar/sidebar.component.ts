@@ -23,7 +23,7 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/UserGroup", //icons
+    path: "/UserGroups", //icons
     title: "Groups",
     rtlTitle: "الرموز",
     icon: "icon-atom",

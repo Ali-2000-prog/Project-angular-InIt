@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { Routes, RouterModule } from "@angular/router";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+// import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { LoginScreenComponent } from "./login-screen/login-screen.component";
 import { ForgotPasswordComponent } from "./login-screen/forgot-password/forgot-password.component";
 import { NewUserComponent } from "./login-screen/new-user/new-user.component";
