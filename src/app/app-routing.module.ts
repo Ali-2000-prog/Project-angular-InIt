@@ -10,6 +10,9 @@ import { ForgotPasswordComponent } from "./login-screen/forgot-password/forgot-p
 import { NewUserComponent } from "./login-screen/new-user/new-user.component";
 
 const routes: Routes = [
+  {path:"Login", component:LoginScreenComponent},
+  {path:"ForgotPassword", component:ForgotPasswordComponent},
+  {path:"NewUser", component:NewUserComponent},
   {
     path: "",
     redirectTo: "dashboard",
@@ -40,9 +43,7 @@ const routes: Routes = [
     redirectTo: "dashboard"
   }
 
-  // {path:"", component:LoginScreenComponent},
-  // {path:"ForgotPassword", component:ForgotPasswordComponent},
-  // {path:"NewUser", component:NewUserComponent}
+  
 ];
 
 @NgModule({

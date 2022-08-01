@@ -16,6 +16,7 @@ import { ComponentsModule } from "./components/components.module";
 import { LoginScreenComponent } from './login-screen/login-screen.component';
 import { ForgotPasswordComponent } from './login-screen/forgot-password/forgot-password.component';
 import { NewUserComponent } from './login-screen/new-user/new-user.component';
+import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-group-popup.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { NewUserComponent } from './login-screen/new-user/new-user.component';
     AppRoutingModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
