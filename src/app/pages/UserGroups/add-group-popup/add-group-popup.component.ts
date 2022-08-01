@@ -17,5 +17,5 @@ export class AddGroupPopupComponent implements OnInit {
   @HostListener('window:keyup.esc') onKeyUp() {
     this.dialogRef.close();
   }
-
+  
 }

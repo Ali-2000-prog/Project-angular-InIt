@@ -19,6 +19,7 @@ import { NewUserComponent } from './login-screen/new-user/new-user.component';
 import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-group-popup.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popup.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatDialogModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

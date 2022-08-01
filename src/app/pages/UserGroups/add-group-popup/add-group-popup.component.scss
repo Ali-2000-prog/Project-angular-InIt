@@ -1,3 +1,7 @@
+label{
+    font-size: medium;
+}
+
 input{
     width: 70%;
 }
@@ -10,8 +14,9 @@ hr{
 
 select{
     width: 70%;
+}
 
-    option{
-        color: black;
-    }
+
+.mat-dialog-container{
+    background: #1e1e2e;
 }

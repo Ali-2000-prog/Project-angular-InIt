@@ -3,23 +3,58 @@
   <div class=" row">
     <div class=" col-md-8">
       <div class=" card">
-        <div class=" card-header"><h5 class=" title">Manage Users</h5></div>
-        <div class=" card-body">
-          <form>
+        <div class=" card-header">
+          <div class="row">
+            <div class="col"><h2 class=" title m-2">Manage Users</h2></div>
+            <div class="col">
+              <div class="input-group">
+                <div class="form-outline">
+                  <input type="search" id="form1" class="form-control mt-2" />
+                </div>
+                <button type="button m-1" class="btn" style="height: 40px; margin-top: 7px;">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
           
-          </form>
+        </div>
+
+        <div class=" card-body">
+          
+          <!-- Table for Groups -->
+
+          <Table class="table">
+            <thead>
+              <tr><th colspan="4" class="text-center"><h3>User List</h3></th></tr>
+            </thead>
+            
+            <tbody>
+              <tr *ngFor="let row of Users">
+                <th><input type="checkbox" name="Ac" class=""></th>
+                <th>{{row.c1}}</th>
+                <th>{{row.c2}}</th>
+                <th>{{row.c3}}</th>
+              </tr>
+            </tbody>
+            
+          </Table>
+
         </div>
         <div class=" card-footer">
-          <button class=" btn btn-fill btn-danger" type="submit">Add</button>
-          <button class=" btn btn-fill btn-danger" type="submit">Update</button>
-          <button class=" btn btn-fill btn-danger" type="submit">Delete</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onAddGroup()">Add</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit">Update</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit">Delete</button>
         </div>
       </div>
     </div>
-
-    <!-- Comments from below were here -->
+      <!-- Comments from below were here -->
   </div>
 </div>
+
+
+
+  
     
     <!-- <div class=" col-md-4">
       <div class=" card card-user">
