@@ -30,11 +30,12 @@
             </thead>
             
             <tbody>
-              <tr *ngFor="let row of Users">
+              <tr *ngFor="let row of listusers">
                 <th><input type="checkbox" name="Ac" class=""></th>
-                <th>{{row.c1}}</th>
-                <th>{{row.c2}}</th>
-                <th>{{row.c3}}</th>
+                <th>{{row.employeNumber}}</th>
+                <th>{{row.userName}}</th>
+                <th>{{row.email}}</th>
+                <th>{{row.department}}</th>
               </tr>
             </tbody>
             

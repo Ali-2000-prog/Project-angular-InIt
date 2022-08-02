@@ -30,11 +30,12 @@
             </thead>
             
             <tbody>
-              <tr *ngFor="let row of Groups">
+              <tr *ngFor="let row of listgroups">
                 <th><input type="checkbox" name="Ac" class=""></th>
-                <th>{{row.c1}}</th>
-                <th>{{row.c2}}</th>
-                <th>{{row.c3}}</th>
+                <th>{{row.groupId}}</th>
+                <th>{{row.userGroupName}}</th>
+                <th>{{row.role}}</th>
+                <th>{{row.active}}</th>
               </tr>
             </tbody>
             

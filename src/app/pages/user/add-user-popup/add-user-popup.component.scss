@@ -1,5 +1,5 @@
 label{
-    font-size: medium;
+
     font-weight: 600;
 }
 
@@ -15,10 +15,8 @@ hr{
 
 select{
     width: 70%;
-}
 
-.mat-dialog-container {
-    box-shadow: 0px 11px 15px -7pxrgba(0, 0, 0, 0.2),0px 24px 38px 3pxrgba(0, 0, 0, 0.14),0px 9px 46px 8pxrgba(0, 0, 0, 0.12);
-    background: #1e1e2e;
-    color: rgba(0,0,0,.87);
+    option{
+        color: black;
+    }
 }

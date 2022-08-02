@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { User } from "src/app/Models/User.model";
+import { UserApiService } from "src/app/Services/user-api.service";
 import { AddUserPopupComponent } from "./add-user-popup/add-user-popup.component";
 
 @Component({
@@ -7,8 +9,9 @@ import { AddUserPopupComponent } from "./add-user-popup/add-user-popup.component
   templateUrl: "user.component.html"
 })
 export class UserComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,private userApi: UserApiService) {}
 
+  listusers:User[]=[];
 
   Users:{c1,c2,c3}[]=[
     { c1:"a1",
@@ -25,10 +28,17 @@ export class UserComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userApi.getUsers()
+    .subscribe((data)=>{
+      this.listusers=data;
+    });
+  }
 
   onAddUser(){
     this.dialog.open(AddUserPopupComponent,{
+      width:"500px",
+      height:"800px",
       disableClose: true
     });
   }

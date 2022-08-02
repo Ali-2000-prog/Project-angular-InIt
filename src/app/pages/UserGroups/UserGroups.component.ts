@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { Group } from "src/app/Models/Group.model";
+import { GroupApiService } from "src/app/Services/group-api.services";
 import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.component";
 
 
@@ -8,7 +10,9 @@ import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.compon
   templateUrl: "UserGroups.component.html"
 })
 export class UserGroupsComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private groupApi: GroupApiService) {}
+
+  listgroups:Group[]=[];
 
   Groups:{c1,c2,c3}[]=[
     { c1:"a1",
@@ -25,7 +29,14 @@ export class UserGroupsComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {}
+  ngOnInit( ) {
+    this.groupApi.getUsers().subscribe(
+      (data)=>{
+        this.listgroups = data;
+        console.log(this.listgroups)
+      }
+    )
+  }
 
   onAddGroup(){
     this.dialog.open(AddGroupPopupComponent,{
