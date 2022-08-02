@@ -13,6 +13,8 @@ const routes: Routes = [
   {path:"Login", component:LoginScreenComponent},
   {path:"ForgotPassword", component:ForgotPasswordComponent},
   {path:"NewUser", component:NewUserComponent},
+  
+
   {
     path: "",
     redirectTo: "dashboard",
@@ -38,10 +40,10 @@ const routes: Routes = [
   //     }
   //   ]
   // },
-  {
-    path: "**",
-    redirectTo: "dashboard"
-  }
+  // {
+  //   path: "**",
+  //   redirectTo: "dashboard"
+  // }
 
   
 ];

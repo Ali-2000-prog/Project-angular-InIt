@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpResponse } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { ToastrModule } from 'ngx-toastr';
 
@@ -20,6 +20,7 @@ import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-g
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popup.component';
+import { UserApiService } from "./Services/user-api.service";
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popu
     ToastrModule.forRoot()
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent],
-  providers: [],
+  providers: [UserApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
