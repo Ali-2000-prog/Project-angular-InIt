@@ -27,9 +27,9 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {}
 
-  onAddGroup(){
+  onAddUser(){
     this.dialog.open(AddUserPopupComponent,{
-      disableClose:true
-    })
+      disableClose: true
+    });
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-user-popup',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddUserPopupComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialogRef: MatDialogRef<AddUserPopupComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  @HostListener('window:keyup.esc') onKeyUp() {
+    this.dialogRef.close();
+  }
+
+  onClose(){
+    this.dialogRef.close();
   }
 
 }
