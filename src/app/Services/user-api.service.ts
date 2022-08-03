@@ -20,7 +20,8 @@ export class UserApiService {
   }
 
   CreateUser(user):Observable<User>{
-    return this.httpclient.post<User>('http://localhost:5001/api/Group',user);
+    console.log("User:"+user);
+    return this.httpclient.post<User>('http://localhost:5001/api/user/add',user);
   }
   
 }

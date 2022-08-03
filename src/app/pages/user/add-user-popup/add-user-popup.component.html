@@ -4,27 +4,28 @@
     <form>
         <div class="form-group">
             <label>User Name:</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='uname'>
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" class="form-control" id="" placeholder="">
+            <input type="password" class="form-control" id="" placeholder="" [(ngModel)]='password'>
         </div>
         <div class="form-group">
             <label>Full Name:</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='fname'>
         </div>
         <div class="form-group">
             <label>Email:</label>
-            <input type="email" class="form-control" id="" placeholder="">
+            <input type="email" class="form-control" id="" placeholder="" [(ngModel)]='email'>
         </div>
         <div class="form-group">
             <label>Employee Number:</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='employeNo'>
         </div>
+
         <div class="form-group">
             <label>Designation:</label>
-            <Select class="form-control">
+            <Select class="form-control" (change)="onSelectedDesignation($event.target.value)">
                 <option value="">Software Engineer</option>
                 <option value="">Mechanical Engineer</option>
                 <option value="">Electrical Engineer</option>
@@ -32,11 +33,20 @@
         </div>
         <div class="form-group">
             <label>Department:</label>
-            <Select class="form-control">
-                <option value="">Design</option>
-                <option value="">Software</option>
-                <option value="">Electrical</option>
+            <Select class="form-control" (change)="onSelectedDepartment($event.target.value)">
+                <option value="">Software Development</option>
+                <option value="">Mechanical Development</option>
+                <option value="">Electrical Development</option>
             </Select>
         </div>
-    </form> 
+        <div class="form-group">
+            <label>Phone Number:</label>
+            <input type="text" class="form-control" id=""  placeholder="Enter Phone Number" [(ngModel)]='phoneno'>
+        </div>
+        
+    </form>
+    <div class="group-btn">
+        <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onAddUser()">Create New User</button>
+        <button class=" btn btn-fill btn-danger m-2" type="submit">Reset</button>
+    </div> 
 </div>
