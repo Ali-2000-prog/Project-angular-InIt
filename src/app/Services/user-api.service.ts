@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../Models/User.model';
@@ -6,6 +6,9 @@ import { User } from '../Models/User.model';
 // https://localhost:44312/api/user
 @Injectable()
 export class UserApiService {
+
+  user:User;
+
 
   constructor(private httpclient: HttpClient){}
   getUsers():Observable<User[]>{

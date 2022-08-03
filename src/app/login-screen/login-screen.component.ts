@@ -35,6 +35,7 @@ export class LoginScreenComponent implements OnInit {
         
       this.user=response;
       console.log(response)
+      this.userApi.user=response;
       //Method Will Verify User Password and name
       this.LoginUser(response.userName.toString(),response.password.toString());
     }); 

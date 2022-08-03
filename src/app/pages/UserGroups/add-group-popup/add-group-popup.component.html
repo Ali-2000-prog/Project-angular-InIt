@@ -1,7 +1,7 @@
 <div class="content">
    <div class="row">
     <div class="col">
-        <h3>Create New User Group</h3>
+        <h2>Create New User Group</h2>
     </div>
     <hr>
     
@@ -9,37 +9,44 @@
     <form>
         <div class="form-group">
             <label>User Group Id:</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" [(ngModel)]='groupId'>
         </div>
         <div class="form-group">
             <label>User Group Name:</label>
-            <input type="text" class="form-control" id="" placeholder="">
-        </div>
-        <div class="form-group">
-            <label>User Group Id:</label>
-            <input type="text" class="form-control" id="" placeholder="">
+            <input type="text" class="form-control" id="" [(ngModel)]='groupName'>
         </div>
 
         <div class="form-group">
             <label>Security Template:</label>
-            <Select class="form-control">
-                <option value="">Option 1</option>
+            <Select class="form-control" [(ngModel)]='options'>
+                <option value="Option 1">Option 1</option>
+                <option value="Option 2">Option 2</option>
+                <option value="Option 3">Option 3</option>
             </Select>
         </div>
 
         <div class="form-group">
             <label>Role:</label>
-            <Select class="form-control">
-                <option value="">Process Owner</option>
+            <Select class="form-control" [(ngModel)]='role'>
+                <option value="Admin">Admin</option>
+                <option value="Buisness Maker">Buisness Maker</option>
+                <option value="Buisness Checker">Buisness Checker</option>
             </Select>
         </div>
 
-        <div class="form-group">
-            <input type="checkbox" name="Active" value="Bike">
+        <div class="div">
+            <div class="row m-2">
+                <div class="col-2">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                </div>
+                <div class="col-1">
+                    <label class="form-check-label" [(ngModel)]='active'>Active</label>
+                </div>
+            </div>
         </div>
 
         <div class="group-btn">
-            <button class=" btn btn-fill btn-danger m-2" type="submit">Create New Group</button>
+            <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onAddGroup()">Create New Group</button>
             <button class=" btn btn-fill btn-danger m-2" type="submit">Reset</button>
 
         </div>

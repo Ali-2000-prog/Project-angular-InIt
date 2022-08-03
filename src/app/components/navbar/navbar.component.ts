@@ -3,6 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialog } from "@angular/material/dialog";
+import { UserProfileComponent } from "src/app/pages/user-profile/user-profile.component";
 
 @Component({
   selector: "app-navbar",
@@ -24,7 +26,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private dialog: MatDialog
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -190,6 +193,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
       return  `with: ${reason}`;
     }
   }
+
+  onUserProfile(){
+    this.dialog.open(UserProfileComponent,{
+      // width:"500px",
+      // height:"500px",
+      disableClose:true
+    });
+  }
+
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }

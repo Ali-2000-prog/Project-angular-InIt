@@ -22,6 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popup.component';
 import { UserApiService } from "./Services/user-api.service";
 import { GroupApiService } from "./Services/group-api.services";
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+
 
 @NgModule({
   imports: [
@@ -35,7 +37,7 @@ import { GroupApiService } from "./Services/group-api.services";
     MatDialogModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent, UserProfileComponent],
   providers: [UserApiService,GroupApiService],
   bootstrap: [AppComponent]
 })
