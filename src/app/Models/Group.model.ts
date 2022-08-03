@@ -1,9 +1,9 @@
 export class Group{
     constructor(
-        public groupId: string,
+        public groupId: number,
         public userGroupName:string,
         public role: string,
-        public options: String,
-        public active: number,
+        public options: string,
+        public active: boolean,
     ){}
 }

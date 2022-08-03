@@ -14,22 +14,11 @@ export class UserGroupsComponent implements OnInit {
 
   listgroups:Group[]=[];
 
-  Groups:{c1,c2,c3}[]=[
-    { c1:"a1",
-      c2:"a2",
-      c3:"a3"
-    },
-    { c1:"b1",
-      c2:"b2",
-      c3:"b3"
-    },
-    { c1:"c1",
-      c2:"c2",
-      c3:"c3"
-    },
-  ];
-
   ngOnInit( ) {
+    this.getGroupData();
+  }
+
+  getGroupData(){
     this.groupApi.getUsers().subscribe(
       (data)=>{
         this.listgroups = data;
@@ -42,6 +31,7 @@ export class UserGroupsComponent implements OnInit {
     this.dialog.open(AddGroupPopupComponent,{
       disableClose:true
     })
+    this.getGroupData();
   }
 
   onclick(){}

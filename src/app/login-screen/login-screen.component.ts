@@ -44,7 +44,7 @@ export class LoginScreenComponent implements OnInit {
   private LoginUser(name:string,password:string){
     if(password == this.password){
       console.log(this.name+" Login Sucess");
-      this.route.navigate([""]);
+      this.route.navigate(["dashboard"]);
     }else{
       this.correctp = 1;
     }

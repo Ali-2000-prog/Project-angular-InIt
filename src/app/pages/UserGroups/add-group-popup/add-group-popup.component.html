@@ -18,26 +18,28 @@
 
         <div class="form-group">
             <label>Security Template:</label>
-            <Select class="form-control" [(ngModel)]='options'>
-                <option value="Option 1">Option 1</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
+            <Select class="form-control"
+            (change)="onSelectedOption($event.target.value)">
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
             </Select>
         </div>
 
         <div class="form-group">
             <label>Role:</label>
-            <Select class="form-control" [(ngModel)]='role'>
-                <option value="Admin">Admin</option>
-                <option value="Buisness Maker">Buisness Maker</option>
-                <option value="Buisness Checker">Buisness Checker</option>
+            <Select class="form-control"
+            (change)="onSelectedRole($event.target.value)">
+                <option default>Admin</option>
+                <option >Buisness Maker</option>
+                <option>Buisness Checker</option>
             </Select>
         </div>
 
         <div class="div">
             <div class="row m-2">
                 <div class="col-2">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" id="activeCheck">
                 </div>
                 <div class="col-1">
                     <label class="form-check-label" [(ngModel)]='active'>Active</label>

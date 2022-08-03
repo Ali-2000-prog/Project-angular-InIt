@@ -10,7 +10,7 @@ import { ForgotPasswordComponent } from "./login-screen/forgot-password/forgot-p
 import { NewUserComponent } from "./login-screen/new-user/new-user.component";
 
 const routes: Routes = [
-  {path:"Login", component:LoginScreenComponent},
+  {path:"", component:LoginScreenComponent},
   {path:"ForgotPassword", component:ForgotPasswordComponent},
   {path:"NewUser", component:NewUserComponent},
   

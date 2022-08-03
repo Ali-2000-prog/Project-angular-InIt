@@ -12,11 +12,15 @@ export class UserApiService {
 
   constructor(private httpclient: HttpClient){}
   getUsers():Observable<User[]>{
-    return  this.httpclient.get<User[]>("https://localhost:44312/api/user")
+    return  this.httpclient.get<User[]>("http://localhost:5001/api/user")
   }
 
   getUser(name:string):Observable<User>{
-    return this.httpclient.get<User>("https://localhost:44312/api/user/"+name);
+    return this.httpclient.get<User>("http://localhost:5001/api/user/"+name);
+  }
+
+  CreateUser(user):Observable<User>{
+    return this.httpclient.post<User>('http://localhost:5001/api/Group',user);
   }
   
 }

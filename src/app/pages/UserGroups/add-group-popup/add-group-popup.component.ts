@@ -13,10 +13,10 @@ export class AddGroupPopupComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<AddGroupPopupComponent>, private groupApi: GroupApiService) { }
 
-  groupId:string = '';
+  groupId:number;
   groupName:string = '';
-  options:string = '';
-  role:string = '';
+  options:string = 'Option 1';
+  role:string = 'Admin';
   active: any;
   group:Group;
   ngOnInit(): void {
@@ -29,7 +29,25 @@ export class AddGroupPopupComponent implements OnInit {
 
   onAddGroup(){
     // this.groupApi
-    console.log(new Group(this.groupId,this.groupName,this.options,this.role,this.active))
+    const checkbox = document.getElementById('activeCheck') as HTMLInputElement
+
+    if(checkbox?.checked){
+      this.active = true;
+    }else{this.active = false}
+    
+    let x = new Group(this.groupId,this.groupName,this.options,this.role,this.active)
+    this.groupApi.CreateGroup(x).subscribe();
+    this.dialogRef.close();
+
+
+  }
+
+  onSelectedRole(value:string){
+    this.role = value;
+  }
+
+  onSelectedOption(value:string){
+    this.options = value;
   }
   
 }
