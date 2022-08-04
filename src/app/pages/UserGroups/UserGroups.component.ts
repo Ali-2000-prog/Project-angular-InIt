@@ -23,7 +23,7 @@ export class UserGroupsComponent implements OnInit {
     this.groupApi.getUsers().subscribe(
       (data)=>{
         this.listgroups = data;
-        console.log(this.listgroups)
+        // console.log(this.listgroups)
       }
     )
   }
@@ -39,8 +39,17 @@ export class UserGroupsComponent implements OnInit {
     console.log("deleting")
     for(let key in this.checked){
       console.log(this.checked[key])
-      this.groupApi.DeleteGroup(this.checked[key]).subscribe();
+      this.groupApi.DeleteGroup(this.checked[key]).subscribe(
+        (response)=>{
+          this.getGroupData();
+        },
+        (err)=>{
+          this.getGroupData();
+        }
+      );
     }
+
+    // this.getGroupData();
     
   }
 

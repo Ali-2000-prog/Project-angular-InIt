@@ -8,7 +8,7 @@ import { User } from '../Models/User.model';
 export class UserApiService {
 
   user:User;
-
+  userlist: any[];
 
   constructor(private httpclient: HttpClient){}
   getUsers():Observable<User[]>{

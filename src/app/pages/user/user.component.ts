@@ -22,6 +22,7 @@ export class UserComponent implements OnInit {
     this.userApi.getUsers()
     .subscribe((data)=>{
       this.listusers=data;
+      console.log(this.listusers);
     });
   }
   onAddUser(){
@@ -35,8 +36,14 @@ export class UserComponent implements OnInit {
   onDeleteUser(){
 
     for(let key in this.checked){
-      this.userApi.DeleteUser(this.checked[key]).subscribe();
+      this.userApi.DeleteUser(this.checked[key]).subscribe(
+        ()=>{
+          console.log("Redoing");
+          this.onload();
+        }
+      );
     }
+    
   }
 
   onSelectChange(value:any){
