@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from "@angular/material/dialog";
 import { UserProfileComponent } from "src/app/pages/user-profile/user-profile.component";
+import { ChangePasswordComponent } from "src/app/pages/change-password/change-password.component";
 
 @Component({
   selector: "app-navbar",
@@ -198,6 +199,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.dialog.open(UserProfileComponent,{
       // width:"500px",
       // height:"500px",
+      disableClose:true
+    });
+  }
+
+  onChangePassowrd(){
+    this.dialog.open(ChangePasswordComponent,{
+      width:"500px",
+      height:"500px",
       disableClose:true
     });
   }

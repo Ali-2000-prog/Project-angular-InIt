@@ -45,7 +45,6 @@ export class AddUserPopupComponent implements OnInit {
     let x = new User(this.uname,this.fname,this.email,this.password,this.employeNo,this.desig,this.depart,this.phoneno);
     this.userApi.CreateUser(x).subscribe();
     this.onClose();
-   
   }
 
 }

@@ -12,34 +12,34 @@ export class UserComponent implements OnInit {
   constructor(private dialog: MatDialog,private userApi: UserApiService) {}
 
   listusers:User[]=[];
-
-  Users:{c1,c2,c3}[]=[
-    { c1:"a1",
-      c2:"a2",
-      c3:"a3"
-    },
-    { c1:"b1",
-      c2:"b2",
-      c3:"b3"
-    },
-    { c1:"c1",
-      c2:"c2",
-      c3:"c3"
-    },
-  ];
-
+  checked:any[] = [];
   ngOnInit() {
+    this.onload()
+    
+  }
+
+  onload(){
     this.userApi.getUsers()
     .subscribe((data)=>{
       this.listusers=data;
     });
   }
-
   onAddUser(){
     this.dialog.open(AddUserPopupComponent,{
       width:"500px",
       height:"800px",
       disableClose: true
     });
+  }
+
+  onDeleteUser(){
+
+    for(let key in this.checked){
+      this.userApi.DeleteUser(this.checked[key]).subscribe();
+    }
+  }
+
+  onSelectChange(value:any){
+    this.checked.push(value)
   }
 }

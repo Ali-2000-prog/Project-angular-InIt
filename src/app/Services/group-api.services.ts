@@ -22,4 +22,7 @@ export class GroupApiService {
     return this.httpclient.post<Group>('http://localhost:5001/api/Group',groups);
   }
   
+  DeleteGroup(id):Observable<Group>{
+    return this.httpclient.delete<Group>("http://localhost:5001/api/Group/"+id);
+  }
 }

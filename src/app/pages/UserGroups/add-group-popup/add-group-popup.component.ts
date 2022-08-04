@@ -35,7 +35,7 @@ export class AddGroupPopupComponent implements OnInit {
       this.active = true;
     }else{this.active = false}
     
-    let x = new Group(this.groupId,this.groupName,this.options,this.role,this.active)
+    let x = new Group(this.groupId,this.groupName,this.role,this.options,this.active)
     this.groupApi.CreateGroup(x).subscribe();
     this.dialogRef.close();
 

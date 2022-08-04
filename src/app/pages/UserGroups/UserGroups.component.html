@@ -31,7 +31,7 @@
             
             <tbody>
               <tr *ngFor="let row of listgroups">
-                <th><input type="checkbox" name="Ac" class=""></th>
+                <th><input type="checkbox" class="" (change)="onSelectChange($event.target.value)" [value]="row.groupId"></th>
                 <th>{{row.groupId}}</th>
                 <th>{{row.userGroupName}}</th>
                 <th>{{row.role}}</th>
@@ -44,8 +44,8 @@
         </div>
         <div class=" card-footer">
           <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onAddGroup()">Add</button>
-          <button class=" btn btn-fill btn-danger m-2" type="submit">Update</button>
-          <button class=" btn btn-fill btn-danger m-2" type="submit">Delete</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit" >Update</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onDeleteGroup()">Delete</button>
         </div>
       </div>
     </div>

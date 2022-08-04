@@ -30,12 +30,12 @@
             </thead>
             
             <tbody>
-              <tr *ngFor="let row of listusers">
-                <th><input type="checkbox" name="Ac" class=""></th>
-                <th>{{row.employeNumber}}</th>
-                <th>{{row.userName}}</th>
-                <th>{{row.email}}</th>
-                <th>{{row.department}}</th>
+              <tr *ngFor="let row of listusers; let i = index">
+                <th><input type="checkbox" class="" (change)="onSelectChange($event.target.value)" [value]="row.userName"></th>
+                <td>{{row.employeNumber}}</td>
+                <td>{{row.userName}}</td>
+                <td>{{row.email}}</td>
+                <td>{{row.department}}</td>
               </tr>
             </tbody>
             
@@ -45,7 +45,7 @@
         <div class=" card-footer">
           <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onAddUser()">Add</button>
           <button class=" btn btn-fill btn-danger m-2" type="submit">Update</button>
-          <button class=" btn btn-fill btn-danger m-2" type="submit">Delete</button>
+          <button class=" btn btn-fill btn-danger m-2" type="submit" (click)="onDeleteUser()">Delete</button>
         </div>
       </div>
     </div>

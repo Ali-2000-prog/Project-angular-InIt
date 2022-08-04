@@ -23,6 +23,7 @@ import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popu
 import { UserApiService } from "./Services/user-api.service";
 import { GroupApiService } from "./Services/group-api.services";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 
 @NgModule({
@@ -37,7 +38,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     MatDialogModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent, UserProfileComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent, UserProfileComponent, ChangePasswordComponent],
   providers: [UserApiService,GroupApiService],
   bootstrap: [AppComponent]
 })

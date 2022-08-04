@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterContentChecked, Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Group } from "src/app/Models/Group.model";
 import { GroupApiService } from "src/app/Services/group-api.services";
@@ -11,9 +11,10 @@ import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.compon
 })
 export class UserGroupsComponent implements OnInit {
   constructor(private dialog: MatDialog, private groupApi: GroupApiService) {}
+  
 
   listgroups:Group[]=[];
-
+  checked:any[] = [];
   ngOnInit( ) {
     this.getGroupData();
   }
@@ -31,8 +32,19 @@ export class UserGroupsComponent implements OnInit {
     this.dialog.open(AddGroupPopupComponent,{
       disableClose:true
     })
-    this.getGroupData();
   }
 
-  onclick(){}
+
+  onDeleteGroup(){
+    console.log("deleting")
+    for(let key in this.checked){
+      console.log(this.checked[key])
+      this.groupApi.DeleteGroup(this.checked[key]).subscribe();
+    }
+    
+  }
+
+  onSelectChange(value:any){
+    this.checked.push(value)
+  }
 }
