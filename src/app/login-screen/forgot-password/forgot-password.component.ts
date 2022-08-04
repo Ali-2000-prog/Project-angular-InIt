@@ -20,10 +20,11 @@ export class ForgotPasswordComponent implements OnInit {
     this.userApi.getUserEmail(this.email).subscribe(
       (data)=>{
         this.user=data;
-        console.log(data);
+        
         this.userApi.user=data;
+        console.log(this.userApi.user);
       }
     );
-    this.route.navigate(["/ChangePassword"]);
+    this.route.navigate(["ChangePasswordLogin"]);
   }
 }

@@ -8,13 +8,13 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { LoginScreenComponent } from "./login-screen/login-screen.component";
 import { ForgotPasswordComponent } from "./login-screen/forgot-password/forgot-password.component";
 import { NewUserComponent } from "./login-screen/new-user/new-user.component";
-import { ChangePasswordComponent } from "./pages/change-password/change-password.component";
+import { ChangePasswordLoginComponent } from "./login-screen/change-password-login/change-password-login.component";
 
 const routes: Routes = [
   {path:"", component:LoginScreenComponent},
   {path:"ForgotPassword", component:ForgotPasswordComponent},
   {path:"NewUser", component:NewUserComponent},
-  // {path:"ChangePassword",component:ChangePasswordComponent},
+  {path:"ChangePasswordLogin",component:ChangePasswordLoginComponent},
   
 
   {
