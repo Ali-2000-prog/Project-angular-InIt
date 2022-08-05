@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "/user", //user
-    title: "User Profile",
+    title: "User Profiles",
     rtlTitle: "ملف تعريفي للمستخدم",
     icon: "icon-single-02",
     class: ""
