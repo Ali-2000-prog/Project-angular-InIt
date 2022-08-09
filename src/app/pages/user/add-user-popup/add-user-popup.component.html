@@ -1,26 +1,31 @@
 <div class="content">
-    <div class="col"><h3>Create New User</h3></div>
+    <div class="col"><h2>Create New User</h2></div>
     <hr>
-    <form>
+    <form [formGroup]="myFormUser">
         <div class="form-group">
             <label>User Name:</label>
-            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='uname'>
+            <input type="text" class="form-control" id="" formControlName="username">
+            <div class="invalid" *ngIf="myFormUser.get('username').invalid && myFormUser.get('username').touched">Your User Name is not right length</div>
         </div>
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" class="form-control" id="" placeholder="" [(ngModel)]='password'>
+            <input type="password" class="form-control" id="" formControlName="password">
+            <div class="invalid" *ngIf="myFormUser.get('password').invalid && passwordForm.touched">Your password does not look right</div>
         </div>
         <div class="form-group">
             <label>Full Name:</label>
-            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='fname'>
+            <input type="text" class="form-control" id=""  formControlName="fullname">
+            <div class="invalid" *ngIf="myFormUser.get('fullname').invalid && myFormUser.get('fullname').touched">Please Enter</div>
         </div>
         <div class="form-group">
             <label>Email:</label>
-            <input type="email" class="form-control" id="" placeholder="" [(ngModel)]='email'>
+            <input type="email" class="form-control" id="" formControlName="email">
+            <div class="invalid" *ngIf="myFormUser.get('email').invalid && myFormUser.get('email').touched">Your email does not look right</div>
         </div>
         <div class="form-group">
             <label>Employee Number:</label>
-            <input type="text" class="form-control" id="" placeholder="" [(ngModel)]='employeNo'>
+            <input type="text" class="form-control" id="" formControlName="employeNo">
+            <div class="invalid" *ngIf="myFormUser.get('employeNo').invalid && myFormUser.get('employeNo').touched">Your Employ number is not correct</div>
         </div>
 
         <div class="form-group">
@@ -41,7 +46,8 @@
         </div>
         <div class="form-group">
             <label>Phone Number:</label>
-            <input type="text" class="form-control" id=""  placeholder="Enter Phone Number" [(ngModel)]='phoneno'>
+            <input type="text" class="form-control" id=""  placeholder="Enter Phone Number" formControlName="phoneno">
+            <div class="invalid" *ngIf="myFormUser.get('phoneno').invalid && myFormUser.get('phoneno').touched">Enter Valid PhonoNO</div>
         </div>
         
     </form>

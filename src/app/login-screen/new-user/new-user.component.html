@@ -3,26 +3,44 @@
     <h2>Sign Up</h2>
     <hr>
 
-    <form>
+    <form [formGroup]="myForm">
         <div class="form-group">
             <label>User Name:</label>
-            <input type="text" class="form-control" id="" placeholder="Enter UserName" [(ngModel)]='uname'>
+            <input type="text" class="form-control" id="" 
+            placeholder="Enter UserName" 
+            formControlName="username">
+            <div *ngIf="myForm.get('username').invalid && myForm.get('username').touched">Your User Name is not right length</div>
        </div>
+
        <div class="form-group">
             <label>Email:</label>
-            <input type="email" class="form-control" id="" aria-describedby="emailHelp" placeholder="user@email.com" [(ngModel)]='email'>
+            <input type="email" class="form-control" id="" aria-describedby="emailHelp" 
+            placeholder="user@email.com" 
+            formControlName="email">
+            <div *ngIf="myForm.get('email').invalid && myForm.get('email').touched">Your email does not look right</div>
         </div>
+        
+
         <div class="form-group">
             <label>Full Name:</label>
-            <input type="text" class="form-control" id="" placeholder="Enter Full Name" [(ngModel)]='fname'>
+            <input type="text" class="form-control" id="" 
+            placeholder="Enter Full Name" 
+            formControlName="fullname">
+            <div *ngIf="myForm.get('fullname').invalid && myForm.get('fullname').touched">Please Enter</div>
        </div>
        <div class="form-group">
             <label>Employee Number:</label>
-            <input type="text" class="form-control" id=""  placeholder="Enter Employee Number" [(ngModel)]='employeNo'>
+            <input type="text" class="form-control" id=""  
+            placeholder="Enter Employee Number" 
+            formControlName="employeNo">
+            <div *ngIf="myForm.get('employeNo').invalid && myForm.get('employeNo').touched">Your Employ number is not correct</div>
         </div>
         <div class="form-group">
             <label>Phone Number:</label>
-            <input type="text" class="form-control" id=""  placeholder="Enter Phone Number" [(ngModel)]='phoneno'>
+            <input type="text" class="form-control" id=""  
+            placeholder="Enter Phone Number" 
+            formControlName="phoneno">
+            <div *ngIf="myForm.get('phoneno').invalid && myForm.get('phoneno').touched">Enter Valid PhonoNO</div>
         </div>
 
         <div class="form-group">
@@ -50,9 +68,12 @@
 
         <div class="form-group">
             <label>Password:</label>
-            <input type="password" class="form-control" id="" placeholder="Password" [(ngModel)]='password'
-            [ngClass]="{'is-invalid':correctp==0 }">
-            <div class="invalid-feedback">Please Provide Usable Password</div>
+            <input type="text" class="form-control" id="" 
+            placeholder="Password" 
+            formControlName="password">
+            <div *ngIf="myForm.get('password').invalid && passwordForm.touched">Your password does not look right</div>
+            
+
         </div>
     </form>
     

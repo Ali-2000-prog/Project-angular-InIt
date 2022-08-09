@@ -27,8 +27,8 @@ export class UserComponent implements OnInit {
   }
   onAddUser(){
     this.dialog.open(AddUserPopupComponent,{
-      width:"500px",
-      height:"800px",
+      width:"550px",
+      height:"850px",
       disableClose: true
     });
   }

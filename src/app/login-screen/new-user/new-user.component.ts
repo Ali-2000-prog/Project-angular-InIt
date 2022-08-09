@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Models/User.model';
 import { UserApiService } from 'src/app/Services/user-api.service';
@@ -10,20 +11,51 @@ import { UserApiService } from 'src/app/Services/user-api.service';
 })
 export class NewUserComponent implements OnInit {
 
-  constructor(private route: Router, private userApi:UserApiService) { }
-
-  uname='';
-  fname='';
-  email='';
-  password='';
-  phoneno:number =0;
-  employeNo:number=0;
+  constructor(private route: Router, 
+    private userApi:UserApiService,
+    private fb:FormBuilder) { }
+  
+  pattern = new RegExp(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/);
   desig='Software Engineer';
   depart='Software Development';
-  
-  correctp=1;
+
   ngOnInit(): void {
   }
+
+  myForm = this.fb.group({
+    email:['',[
+      Validators.required,
+      Validators.email
+    ]],
+    password: ['',[
+    Validators.required,
+    Validators.pattern(this.pattern),
+    Validators.minLength(8) 
+  ]],
+    username: ['',[
+    Validators.required,
+    Validators.minLength(4),
+  ]],
+    fullname: ['',[
+    Validators.required,
+  ]],
+   employeNo: ['',[
+    Validators.required,
+    Validators.minLength(4)
+  ]],
+    phoneno: ['',[
+    Validators.required,
+    Validators.minLength(8),
+    Validators.maxLength(8) 
+  ]],
+  });
+
+  get passwordForm(){return this.myForm.get('password')}
+  get usernameForm(){return this.myForm.get('username')}
+  get emailForm(){return this.myForm.get('email')}
+  get fullnameForm(){return this.myForm.get('fullname')}
+  get phonenoForm(){return this.myForm.get('phoneno')}
+  get employeNoForm(){return this.myForm.get('employeNo')}
 
   onSelectedDesignation(value:string){
     this.desig = value;
@@ -34,18 +66,23 @@ export class NewUserComponent implements OnInit {
   }
   
   onRegister(){
-    if(this.password.length<8){
-      this.correctp=0;
+    let password = this.myForm.get('password').value; 
+    let email =  this.myForm.get('email').value;
+    let uname = this.myForm.get('username').value;
+    let fname = this.myForm.get('fullname').value;
+    let phoneno = this.myForm.get('phoneno').value;
+    let employeNo = this.myForm.get('employeNo').value;
+    
+    if(this.myForm.invalid){
+      alert("Failed Form")
       return;
     }
-    if(this.email == '' || this.fname == ''|| this.uname == '' || this.password =='' || this.employeNo == 0|| this.phoneno == 0){
-      alert("Please FIll Required Feilds");
-      return;
-    }
-    let x = new User(this.uname,this.fname,this.email,this.password,this.employeNo,this.desig,this.depart,this.phoneno);
-    this.userApi.CreateUser(x).subscribe();
+
+    let x = new User(uname,fname,email,password,employeNo,this.desig,this.depart,phoneno);
+    // this.userApi.CreateUser(x).subscribe();
+    console.log(x)
     alert("User Created Succesfully Redirecting back to login")
-    this.route.navigate([""]);
+    // this.route.navigate([""]);
   }
 
 

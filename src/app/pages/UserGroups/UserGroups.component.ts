@@ -1,4 +1,4 @@
-import { AfterContentChecked, Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Group } from "src/app/Models/Group.model";
 import { GroupApiService } from "src/app/Services/group-api.services";
@@ -32,6 +32,7 @@ export class UserGroupsComponent implements OnInit {
     this.dialog.open(AddGroupPopupComponent,{
       disableClose:true
     })
+    this.getGroupData();
   }
 
 
@@ -41,9 +42,10 @@ export class UserGroupsComponent implements OnInit {
       console.log(this.checked[key])
       this.groupApi.DeleteGroup(this.checked[key]).subscribe(
         (response)=>{
-          this.getGroupData();
+          console.log(response);
         },
         (err)=>{
+          console.log(err)
           this.getGroupData();
         }
       );
