@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { User } from "src/app/Models/User.model";
+import { DialogService } from "src/app/Services/Mat-dialogServices/dialog.service.ts.service";
 import { UserApiService } from "src/app/Services/user-api.service";
 import { AddUserPopupComponent } from "./add-user-popup/add-user-popup.component";
 
@@ -9,7 +10,7 @@ import { AddUserPopupComponent } from "./add-user-popup/add-user-popup.component
   templateUrl: "user.component.html"
 })
 export class UserComponent implements OnInit {
-  constructor(private dialog: MatDialog,private userApi: UserApiService) {}
+  constructor(private dialog: MatDialog,private userApi: UserApiService, private dialogService: DialogService) {}
 
   listusers:User[]=[];
   checked:any[] = [];
@@ -26,27 +27,38 @@ export class UserComponent implements OnInit {
     });
   }
   onAddUser(){
-    this.dialog.open(AddUserPopupComponent,{
+    const dialogRef = this.dialog.open(AddUserPopupComponent,{
       width:"550px",
       height:"850px",
       disableClose: true
     });
+    dialogRef.afterClosed().subscribe(()=>{
+      this.onload();
+    })
   }
 
   onDeleteUser(){
-
-    for(let key in this.checked){
-      this.userApi.DeleteUser(this.checked[key]).subscribe(
-        ()=>{
-          console.log("Redoing");
-          this.onload();
+    this.dialogService.openConfirmDialog('Are you sure to delete User this record ?')
+    .afterClosed().subscribe(res=>{
+      if(res){
+        for(let key in this.checked){
+          this.userApi.DeleteUser(this.checked[key]).subscribe(
+            ()=>{
+              console.log("Redoing");
+              this.onload();
+            }
+          );
         }
-      );
-    }
-    
+      }
+    });
   }
 
-  onSelectChange(value:any){
-    this.checked.push(value)
+  onSelectChange(e:any,uname:any){
+    if(e.target.checked){
+      this.checked.push(uname);
+    }
+    else{
+      this.checked = this.checked.filter(m=>m!=uname);
+    }
   }
 }

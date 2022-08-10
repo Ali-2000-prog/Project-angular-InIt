@@ -31,7 +31,7 @@
             
             <tbody>
               <tr *ngFor="let row of listgroups">
-                <th><input type="checkbox" class="" (change)="onSelectChange($event.target.value)" [value]="row.groupId"></th>
+                <th><input type="checkbox" class="" (change)="onSelectChange($event,row.groupId)" [value]="row.groupId"></th>
                 <th>{{row.groupId}}</th>
                 <th>{{row.userGroupName}}</th>
                 <th>{{row.role}}</th>

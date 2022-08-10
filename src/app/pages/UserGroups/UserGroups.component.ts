@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Group } from "src/app/Models/Group.model";
 import { GroupApiService } from "src/app/Services/group-api.services";
+import { DialogService } from "src/app/Services/Mat-dialogServices/dialog.service.ts.service";
 import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.component";
 
 
@@ -10,7 +11,9 @@ import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.compon
   templateUrl: "UserGroups.component.html"
 })
 export class UserGroupsComponent implements OnInit {
-  constructor(private dialog: MatDialog, private groupApi: GroupApiService) {}
+  constructor(private dialog: MatDialog, 
+    private groupApi: GroupApiService,
+    private dialogService: DialogService) {}
   
 
   listgroups:Group[]=[];
@@ -29,33 +32,43 @@ export class UserGroupsComponent implements OnInit {
   }
 
   onAddGroup(){
-    this.dialog.open(AddGroupPopupComponent,{
+    const dialogRef = this.dialog.open(AddGroupPopupComponent,{
       disableClose:true
     })
-    this.getGroupData();
+    dialogRef.afterClosed().subscribe(()=>{
+      this.getGroupData();
+    });
   }
 
 
   onDeleteGroup(){
     console.log("deleting")
-    for(let key in this.checked){
-      console.log(this.checked[key])
-      this.groupApi.DeleteGroup(this.checked[key]).subscribe(
-        (response)=>{
-          console.log(response);
-        },
-        (err)=>{
-          console.log(err)
-          this.getGroupData();
+    
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res=>{
+      if(res){
+        //if true then execute delete of data
+        for(let key in this.checked){
+          console.log(this.checked[key])
+          this.groupApi.DeleteGroup(this.checked[key]).subscribe(
+            ()=>{
+              console.log("Redoing");
+              this.getGroupData();
+            }
+          );
         }
-      );
-    }
-
-    // this.getGroupData();
+      }
+    });
+    this.getGroupData();
     
   }
 
-  onSelectChange(value:any){
-    this.checked.push(value)
+  onSelectChange(e:any,id:number){
+    if(e.target.checked){
+      this.checked.push(id);
+    }
+    else{
+      this.checked = this.checked.filter(m=>m!=id);
+    }
   }
 }

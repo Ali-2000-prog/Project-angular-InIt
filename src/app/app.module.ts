@@ -19,13 +19,17 @@ import { NewUserComponent } from './login-screen/new-user/new-user.component';
 import { AddGroupPopupComponent } from './pages/UserGroups/add-group-popup/add-group-popup.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
+
 import { AddUserPopupComponent } from './pages/user/add-user-popup/add-user-popup.component';
 import { UserApiService } from "./Services/user-api.service";
 import { GroupApiService } from "./Services/group-api.services";
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 import { ChangePasswordLoginComponent } from './login-screen/change-password-login/change-password-login.component';
-
+import { DialogService } from "./Services/Mat-dialogServices/dialog.service.ts.service";
+import { MatConfirmDialogComponent } from './ExtensionsTemplates/mat-confirm-dialog/mat-confirm-dialog.component';
+import {MatButtonModule} from '@angular/material/button'
 
 @NgModule({
   imports: [
@@ -38,10 +42,24 @@ import { ChangePasswordLoginComponent } from './login-screen/change-password-log
     AppRoutingModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatIconModule,
+    MatButtonModule,
     ToastrModule.forRoot()
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, LoginScreenComponent, ForgotPasswordComponent, NewUserComponent, AddGroupPopupComponent, AddUserPopupComponent, UserProfileComponent, ChangePasswordComponent, ChangePasswordLoginComponent],
-  providers: [UserApiService,GroupApiService],
+  declarations: [
+    AppComponent, 
+    AdminLayoutComponent, 
+    AuthLayoutComponent, 
+    LoginScreenComponent, 
+    ForgotPasswordComponent, 
+    NewUserComponent, 
+    AddGroupPopupComponent, 
+    AddUserPopupComponent, 
+    UserProfileComponent, 
+    ChangePasswordComponent, 
+    ChangePasswordLoginComponent, 
+    MatConfirmDialogComponent],
+  providers: [UserApiService,GroupApiService,DialogService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -31,7 +31,7 @@
             
             <tbody>
               <tr *ngFor="let row of listusers; let i = index">
-                <th><input type="checkbox" class="" (change)="onSelectChange($event.target.value)" [value]="row.userName"></th>
+                <th><input type="checkbox" class="" (change)="onSelectChange($event,row.userName)" [value]="row.userName"></th>
                 <td>{{row.employeNumber}}</td>
                 <td>{{row.userName}}</td>
                 <td>{{row.email}}</td>
