@@ -32,9 +32,14 @@ export class UserApiService {
     return this.httpclient.delete<User>("http://localhost:5001/api/user/"+uname);
   }
   
-  UpdateUserPassword(uname,password):Observable<any>{
+  UpdateUserPassword(password: string, code: number):Observable<any>{
 
-    return this.httpclient.put("http://localhost:5001/api/user/password/"+uname+"/"+password,uname);
+    return this.httpclient.put("http://localhost:5001/api/user/password/" + password + "/" + code, password);
   }
-  // "http://localhost:5001/api/user/password/TestUser5/555555"
+
+  MailVerificationRecovery(email:string):Observable<any>{
+    return this. httpclient.get("http://localhost:5001/api/userEmailVerify/Recover/"+email);
+  }
+
+  
 }

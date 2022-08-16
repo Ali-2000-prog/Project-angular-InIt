@@ -4,6 +4,7 @@ import { Group } from "src/app/Models/Group.model";
 import { GroupApiService } from "src/app/Services/group-api.services";
 import { DialogService } from "src/app/Services/Mat-dialogServices/dialog.service.ts.service";
 import { AddGroupPopupComponent } from "./add-group-popup/add-group-popup.component";
+import { UpdateGroupPopupComponent } from "./update-group-popup/update-group-popup.component";
 
 
 @Component({
@@ -61,6 +62,17 @@ export class UserGroupsComponent implements OnInit {
     });
     this.getGroupData();
     
+  }
+
+  onUpdateGroup(){
+    const dialogRef = this.dialog.open(UpdateGroupPopupComponent,{
+      // width:'400px',
+      // height:'200px',
+      disableClose:true
+    })
+    dialogRef.afterClosed().subscribe(()=>{
+      this.getGroupData();
+    });
   }
 
   onSelectChange(e:any,id:number){

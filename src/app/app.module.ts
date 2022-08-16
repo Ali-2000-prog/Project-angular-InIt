@@ -29,7 +29,9 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
 import { ChangePasswordLoginComponent } from './login-screen/change-password-login/change-password-login.component';
 import { DialogService } from "./Services/Mat-dialogServices/dialog.service.ts.service";
 import { MatConfirmDialogComponent } from './ExtensionsTemplates/mat-confirm-dialog/mat-confirm-dialog.component';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import { UpdateGroupPopupComponent } from './pages/UserGroups/update-group-popup/update-group-popup.component';
+import { UpdateUserPopupComponent } from './pages/user/update-user-popup/update-user-popup.component'
 
 @NgModule({
   imports: [
@@ -58,7 +60,7 @@ import {MatButtonModule} from '@angular/material/button'
     UserProfileComponent, 
     ChangePasswordComponent, 
     ChangePasswordLoginComponent, 
-    MatConfirmDialogComponent],
+    MatConfirmDialogComponent, UpdateGroupPopupComponent, UpdateUserPopupComponent],
   providers: [UserApiService,GroupApiService,DialogService],
   bootstrap: [AppComponent]
 })

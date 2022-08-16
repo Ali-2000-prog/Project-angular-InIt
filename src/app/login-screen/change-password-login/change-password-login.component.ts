@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/Services/user-api.service';
 
@@ -8,37 +9,68 @@ import { UserApiService } from 'src/app/Services/user-api.service';
   styleUrls: ['./change-password-login.component.scss']
 })
 export class ChangePasswordLoginComponent implements OnInit {
+ 
+ 
+  pattern = new RegExp(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d][A-Za-z\d!@#$%^&*()_+]{7,19}$/);
 
+  constructor(private route: Router, private userApi:UserApiService,private fb:FormBuilder) { }
 
-  constructor(private route: Router, private userApi:UserApiService) { }
-  newpassword='';
-  oldpassword='';
   confirmold=1
-  confirmpassword='';
   confirmp=1;
+
   ngOnInit(): void {
   }
 
+
+  myFormChange = this.fb.group({
+    
+    password: ['',[
+    Validators.required,
+    Validators.pattern(this.pattern),
+  ]],
+  passwordConfirm: ['',[
+    Validators.required,
+    Validators.pattern(this.pattern),
+  ]],
+  code:['',[
+    Validators.required,
+    Validators.minLength(4)
+  ]
+
+  ]
+  
+  });
+
+  get passwordForm(){return this.myFormChange.get('password')}
+  get passwordFormConfirm(){return this.myFormChange.get('passwordConfirm')}
+  get Code(){return this.myFormChange.get('code')}
+
   onChangePassword(){
+
+    let password= this.myFormChange.get('password').value; 
+    let passwordConfirm = this.myFormChange.get('passwordConfirm').value; 
+    let code = this.myFormChange.get('code').value; 
     this.confirmp=1;
-    this.confirmold=1
-    if(this.oldpassword == this.userApi.user[0].password){
-      if(this.newpassword == this.confirmpassword){
-        //Call Update API
-        this.userApi.UpdateUserPassword(this.userApi.user[0].userName,this.confirmpassword).subscribe();
-        alert("Password Changed")
-        this.route.navigate([""]);
-      }else{
-        this.confirmp=0;
-        return;
-      }
-    }else{
-      this.confirmold=0;
-      console.log(this.userApi.user[0].password)
-      console.log(this.newpassword)
+    console.log(code)
+    if(password== passwordConfirm){
+    //Call Update API
+      var response: any = this.userApi.UpdateUserPassword(passwordConfirm, code).subscribe(
+        (res)=>{
+          console.log(res);
+        },
+        (err)=>{
+         console.log(err); 
+         
+        }
+      );
+      alert("Password Changed")
+      // this.route.navigate([""]);
+   }else{
+    this.confirmp=0;
       return;
-    }
+   }
+    
   }
-  // Testuser2@Email.com
+
 
 }

@@ -29,7 +29,7 @@ export class ChangePasswordComponent implements OnInit {
     if(this.oldpassword == this.userApi.user.password){
       if(this.newpassword == this.confirmpassword){
         //Call Update API
-        this.userApi.UpdateUserPassword(this.userApi.user.userName,this.confirmpassword).subscribe();
+        // this.userApi.UpdateUserPassword(this.userApi.user.userName,this.confirmpassword).subscribe();
         this.dialogRef.close();
       }else{
         this.confirmp=0;

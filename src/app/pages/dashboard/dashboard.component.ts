@@ -463,8 +463,5 @@ export class DashboardComponent implements OnInit {
     });
 
   }
-  public updateOptions() {
-    this.myChartData.data.datasets[0].data = this.data;
-    this.myChartData.update();
-  }
+  
 }

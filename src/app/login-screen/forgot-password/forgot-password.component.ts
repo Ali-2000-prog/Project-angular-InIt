@@ -9,8 +9,7 @@ import { UserApiService } from 'src/app/Services/user-api.service';
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent implements OnInit {
-  email='';
-  user:User;
+  email:string='';
   constructor(private route: Router, private userApi: UserApiService) { }
 
   ngOnInit(): void {
@@ -19,12 +18,17 @@ export class ForgotPasswordComponent implements OnInit {
   onActivationLink(){
     this.userApi.getUserEmail(this.email).subscribe(
       (data)=>{
-        this.user=data;
-        
-        this.userApi.user=data;
-        console.log(this.userApi.user);
+        console.log("frank15@ethereal.email");
+        if(this.email == data[0].email){
+          this.userApi.MailVerificationRecovery(this.email).subscribe();;
+          alert("Mail Send");
+          this.route.navigate(["ChangePasswordLogin"]);
+        }
+      },
+      ()=>{
+        alert("Invalid Mail");
       }
     );
-    this.route.navigate(["ChangePasswordLogin"]);
+    
   }
 }
